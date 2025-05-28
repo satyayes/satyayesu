@@ -1,36 +1,25 @@
-const navbar = document.querySelector(".navbar");
-const menuBtn = document.querySelector("#menu-btn");
-const slides = document.querySelectorAll(".home .slides-container .slide");
-const header = document.querySelector(".header");
-
-let index = 0;
-
-// JavaScript to toggle the
-// visibility of the navigation menu
-document.addEventListener("DOMContentLoaded",
-	function () {
-		const hamburger = document.getElementById("hamburger");
-		const navbar = document.querySelector(".navbar");
-
-		hamburger.addEventListener("click", function () {
-			navbar.classList.toggle("active");
-		});
-	});
-
-window.addEventListener("scroll", () => {
-	navbar.classList.remove("active");
-});
-
-function showSlide(nextIndex) {
-	slides[index].classList.remove("active");
-	index = (nextIndex + slides.length) % slides.length;
-	slides[index].classList.add("active");
-}
-
-function next() {
-	showSlide(index + 1);
-}
-
-function prev() {
-	showSlide(index - 1);
-}
+// Script.js
+// create a new QRCode instance
+let qrcode = new QRCode(
+    document.querySelector(".qrcode")
+);
+// Initial QR code generation
+// with a default message
+qrcode.makeCode("Why did you scan me?");
+// Function to generate QR
+// code based on user input
+function generateQr() {
+    if (
+        document.querySelector("input")
+            .value === "" ||
+        document.querySelector("input")
+            .value === " ") {
+        alert(
+            "Input Field Can not be blank!"
+        );} 
+    else {
+        qrcode.makeCode(
+            document.querySelector(
+                "input"
+            ).value);
+}}
